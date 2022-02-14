@@ -1,4 +1,11 @@
 const database = {
+    governors: [
+        {id: 1, name: "Alma Jackson", active: true},
+        {id: 2, name: "Jack Stell", active: true},
+        {id: 3, name: "Xtina Prince", active: false},
+        {id: 4, name: "Daphne Snow", active: true},
+        {id: 5, name: "Diana Warship", active: false}
+    ],
     transientState: {}
 }
 
@@ -17,4 +24,4 @@ export const purchaseMineral = () => {
         // application can re-render and update state
         document.dispatchEvent( new CustomEvent("stateChanged") )
     }
-}
+
