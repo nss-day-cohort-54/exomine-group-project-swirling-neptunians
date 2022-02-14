@@ -1,4 +1,6 @@
 // Import all the things
+// import { Governors } from "./Governors.js";
+
 
 // Event listener for the purchase mineral button (with the purhcaseMineral function)
 
