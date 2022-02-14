@@ -5,7 +5,36 @@ const database = {
         {id: 3, name: "Xtina Prince", active: false},
         {id: 4, name: "Daphne Snow", active: true},
         {id: 5, name: "Diana Warship", active: false}
-    
+    ],
+
+    //added an array of minerals
+    minerals: [
+        {
+            id: 1,
+            name: "iron",
+            weight: 72
+        },
+        {
+            id: 2,
+            name: "copper",
+            weight: 16
+        },
+        {
+            id: 3,
+            name: "magnesium",
+            weight: 25
+        },
+        {
+            id: 4,
+            name: "cobalt",
+            weight: 100
+        },
+        {
+            id: 5,
+            name: "zinc",
+            weight: 8
+        }
+    ],
     colonies: [
         { id: 1, name: "Earth" },
         { id: 2, name: "Mars" },
