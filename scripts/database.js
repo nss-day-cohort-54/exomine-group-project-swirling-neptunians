@@ -5,7 +5,15 @@ const database = {
         {id: 3, name: "Xtina Prince", active: false},
         {id: 4, name: "Daphne Snow", active: true},
         {id: 5, name: "Diana Warship", active: false}
+    
+    colonies: [
+        { id: 1, name: "Earth" },
+        { id: 2, name: "Mars" },
+        { id: 3, name: "Saturn" },
+        { id: 4, name: "Uranus" },
+        { id: 5, name: "Mercury" }
     ],
+    
     transientState: {}
 }
 
@@ -20,7 +28,7 @@ export const getFacilities = () => {
 
 export const purchaseMineral = () => {
 
-        // Broadcast custom event to entire documement so that the
+        // Broadcast custom event to entire document so that the
         // application can re-render and update state
         document.dispatchEvent( new CustomEvent("stateChanged") )
     }
