@@ -1,4 +1,10 @@
 const database = {
+    facilities: [
+        {id: 1, name: "Ganymede", active: true},
+        {id: 2, name: "lo", active: true},
+        {id: 3, name: "Titan", active: true},
+    ]
+
     transientState: {}
 }
 
@@ -8,7 +14,7 @@ export const setFacility = (facilityId) => {
 }
 
 export const getFacilities = () => {
-    return database.facilities.map(f => ({...f}))
+    return database.facilities.map(facility => ({...facility}))
 }
 
 export const purchaseMineral = () => {
