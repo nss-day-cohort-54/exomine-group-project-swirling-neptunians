@@ -1,4 +1,12 @@
 const database = {
+// added an array of facilities
+    facilities: [
+        {id: 1, name: "Ganymede", active: true},
+        {id: 2, name: "lo", active: true},
+        {id: 3, name: "Titan", active: true},
+    ],
+
+
     governors: [
         {id: 1, name: "Alma Jackson", active: true},
         {id: 2, name: "Jack Stell", active: true},
@@ -35,6 +43,7 @@ const database = {
             weight: 8
         }
     ],
+
     colonies: [
         { id: 1, name: "Earth" },
         { id: 2, name: "Mars" },
@@ -52,7 +61,7 @@ export const setFacility = (facilityId) => {
 }
 
 export const getFacilities = () => {
-    return database.facilities.map(f => ({...f}))
+    return database.facilities.map(facility => ({...facility}))
 }
 
 export const purchaseMineral = () => {
