@@ -1,7 +1,7 @@
 //  Import the facilities array (getter & setter function)
 //  Import the governors array (getter & setter function)
 import { getFacilities, setFacility } from "./database.js";
-
+import {FacilityMinerals} from "./FacilityMinerals.js";
 // Declare a variable that invokes the getter function
 const facilities = getFacilities()
 
@@ -12,6 +12,7 @@ const facilities = getFacilities()
         (event) => {
             if (event.target.id === "facility") {
                 setFacility(parseInt(event.target.value))
+                FacilityMinerals()
             }
         }
     )
