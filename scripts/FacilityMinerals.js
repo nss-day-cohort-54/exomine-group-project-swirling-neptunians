@@ -1,33 +1,29 @@
 // Import getter and setters from database
-import { getMinerals, getFacilities, getFacilityMinerals, getTransientState} from "./database.js";
+import { getMinerals, getFacilities, getFacilityMinerals } from "./database.js";
 // Declare a variable and set it equal to invoked getter function
 const minerals = getMinerals()
 const facilities = getFacilities()
 const facilityMinerals = getFacilityMinerals()
 
-// Write and export (to Facilities.js) a function that will check the facility id selected by the User 
-        //if facilityId === transientState.facilityId
+// if the user has made a selection then store the user selection
+
+// initialize an empty array
+const newFacilityMineralsArray = []
 export const FacilityMinerals = () => {
-    const transientState = getTransientState()
-
-    const selectedFacility = transientState.selectedFacility
-         if(selectedFacility) {
-            // if someone has selected a facility, use find() method to search for facility Id's
-
-            //iterate the facility array
-            const facilityName = facilities.find(facility => facility.id === selectedFacility).name
-            
-                // and return a string interpolation of weight and mineral type (RADIO BUTTONS)
-    // use string interpolation inside the html
-            let html = `<h2>Facility Minerals for ${facilityName}</h2>`
-            return html 
-        }
-    return `<h3>Facility Minerals</h3>`
+    // iterate the facilities array and match the facility.id and the facilityMinerals.facilityId (filter)
+    const filteredItemsArray = facilities.filter(facility => {return facility.id === facilityMinerals.facilityId})
+    // returns an array of matching facility mineral objects
+        // iterate the filtered items array
+        // for each facility mineral object find() the corresponding mineral that matches mineralId
+        const foundMineralObjects = minerals.find(mineral => {return mineral.id === facilityMinerals.mineralId})
+        // returns a mineral object
+                // build a string with the mineral name and weight
+                return `${foundMineralObjects.weight} tons of ${foundMineralObjects.name}`
+                // push to the empty array
+                newFacilityMineralsArray.push(foundMineralObjects)
+                // join all the strings in the array into a single string
+                filteredItemsArray += foundMineralObjects.join("")
+                
+    // return string
 }
 
-
-// define a function that compares facilityMinersls.mineralId === minerals.id
-// if they are equal, return a radio button with the minerals.id as the value
-
-// const mineralName = 
-// Event Listener (change) will show 1 ton of selected mineral in Cart
