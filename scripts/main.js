@@ -1,10 +1,16 @@
 // Import Exomine
-// import { Governors } from "./Governors.js";
+import { Governors } from "./Governors.js";
 import { Facilities } from "./Facilities.js";
-
+import { Exomine } from "./Exomine.js"
 // query selector to container id in index.html
 const mainContainer = document.querySelector("#container")
-mainContainer.innerHTML = Facilities()
+const renderAllHTML = () => {
+
+
+    mainContainer.innerHTML = Exomine()
+}
+
+renderAllHTML()
 
 // function that renders Exomine into html
 
