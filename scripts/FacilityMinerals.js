@@ -1,6 +1,6 @@
 // Import getter and setters from database
 
-import { getMinerals, getFacilities, getFacilityMinerals, getTransientState } from "./database.js";
+import { getMinerals, getFacilityMinerals, getTransientState } from "./database.js";
 
 // Declare a variable and set it equal to invoked getter function
 const minerals = getMinerals()
@@ -31,7 +31,9 @@ export const FacilityMinerals = () => {
             })
 
             if (transientState.selectedFacility === facilityMineral.facilityId) {
-                html += `<li>${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
+                html += `<li>
+                <input type="radio" name="mineralList"/>${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
+
             }
 
             // const filteredFacilityMinerals = facilityMinerals.filter(facilityMineral => {
