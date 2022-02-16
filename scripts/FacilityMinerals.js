@@ -4,18 +4,19 @@ import { getMinerals, getFacilities, getFacilityMinerals, getTransientState } fr
 
 // Declare a variable and set it equal to invoked getter function
 const minerals = getMinerals()
-const facilities = getFacilities()
+// const facilities = getFacilities()
 const facilityMinerals = getFacilityMinerals()
 // if the user has made a selection then store the user selection
 
 
 // initialize an empty array
-const newFacilityMineralsArray = []
 export const FacilityMinerals = () => {
+    
+    const newFacilityMineralsArray = []
+    let transientState = getTransientState()
 
-    const transientState = getTransientState()
     if ("selectedFacility" in transientState) {
-
+        let html = "<ul>"
 
         // iterate the facilities array and match the facility.id and the facilityMinerals.facilityId (filter)
         const filteredItemsArray = facilityMinerals.filter(facilityMineral => {
@@ -23,26 +24,32 @@ export const FacilityMinerals = () => {
         })
         // returns an array of matching facility mineral objects
         // iterate the filtered items array
-        for (const facility of filteredItemsArray) {
+        for (const facilityMineral of filteredItemsArray) {
 
             const foundMineralObject = minerals.find(mineral => {
-                return mineral.id === facility.mineralId
+                return mineral.id === facilityMineral.mineralId
             })
 
-            // build a string with the mineral name and weight
-            let html = `${foundMineralObject.weight} tons of ${foundMineralObject.name}`
-            // push to the empty array
+            if (transientState.selectedFacility === facilityMineral.facilityId) {
+                html += `<li>${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
+            }
 
-            newFacilityMineralsArray.push(html)
+            // const filteredFacilityMinerals = facilityMinerals.filter(facilityMineral => {
+            //     if (facilityMineral.facilityId === transientState.selectedFacility)
+            //     return html += `<li>${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
+            // })
+            // push to the empty array
+            
         }
+        newFacilityMineralsArray.push(html)
         // for each facility mineral object find() the corresponding mineral that matches mineralId
         // returns a mineral object
         // join all the strings in the array into a single string
         const newHtml = newFacilityMineralsArray.join("")
-
+        html += "</ul>"
         return newHtml
     } else {
-        return ""
+        return "asdfa"
     }
 }
 

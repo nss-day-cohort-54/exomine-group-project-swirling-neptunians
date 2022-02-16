@@ -16,11 +16,11 @@ const database = {
 
     //added an array of minerals
     minerals: [
-        {id: 1, name: "iron", weight: 72},
-        {id: 2, name: "copper", weight: 16},
-        {id: 3, name: "magnesium", weight: 25},
-        {id: 4, name: "cobalt", weight: 100},
-        {id: 5, name: "zinc", weight: 8}
+        {id: 1, name: "iron"},
+        {id: 2, name: "copper"},
+        {id: 3, name: "magnesium"},
+        {id: 4, name: "cobalt"},
+        {id: 5, name: "zinc"}
     ],
 
     colonies: [
@@ -33,7 +33,7 @@ const database = {
     // add facility minerals array with mineral objects
     facilityMinerals: [
         {id: 1, mineralId: 3, mineralWeight: 58, facilityId: 1},
-        {id: 2, mineralId: 4, mineralWeight: 78, facilityId: 2},
+        {id: 2, mineralId: 1, mineralWeight: 78, facilityId: 2},
         {id: 3, mineralId: 1, mineralWeight: 32, facilityId: 3},
         {id: 4, mineralId: 5, mineralWeight: 77, facilityId: 1},
         {id: 5, mineralId: 2, mineralWeight: 90, facilityId: 2},

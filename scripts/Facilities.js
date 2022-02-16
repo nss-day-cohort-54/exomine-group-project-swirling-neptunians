@@ -2,6 +2,7 @@
 //  Import the governors array (getter & setter function)
 import { getFacilities, setFacility } from "./database.js";
 import {FacilityMinerals} from "./FacilityMinerals.js";
+import { getTransientState } from "./database.js";
 // Declare a variable that invokes the getter function
 const facilities = getFacilities()
 
@@ -36,3 +37,5 @@ export const Facilities = () => {
     // filter the array of colony minerals on the colonyId foreign key as the first step
 
     
+
+
