@@ -12,7 +12,7 @@ const facilities = getFacilities()
         (event) => {
             if (event.target.id === "facility") {
                 setFacility(parseInt(event.target.value))
-                FacilityMinerals()
+              
             }
         }
     )
