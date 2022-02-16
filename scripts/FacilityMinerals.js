@@ -1,10 +1,13 @@
 // Import getter and setters from database
+
 import { getMinerals, getFacilities, getFacilityMinerals, getTransientState } from "./database.js";
+
 // Declare a variable and set it equal to invoked getter function
 const minerals = getMinerals()
 const facilities = getFacilities()
 const facilityMinerals = getFacilityMinerals()
 // if the user has made a selection then store the user selection
+
 
 // initialize an empty array
 const newFacilityMineralsArray = []
@@ -42,4 +45,5 @@ export const FacilityMinerals = () => {
         return ""
     }
 }
+
 
