@@ -1,7 +1,8 @@
 // Import all the things
 import { Governors } from "./Governors.js";
 import { Facilities } from "./Facilities.js";
-import {FacilityMinerals} from "./FacilityMinerals.js"
+import { FacilityMinerals } from "./FacilityMinerals.js"
+import { ColonyMinerals } from "./ColonyMinerals.js";
 
 
 // Event listener for the purchase mineral button (with the purhcaseMineral function)
@@ -15,5 +16,6 @@ import {FacilityMinerals} from "./FacilityMinerals.js"
         <h2>Facilities</h2>
         ${Facilities()}
         ${FacilityMinerals()}
+        ${ColonyMinerals()}
         `
     }
