@@ -8,8 +8,13 @@ const minerals = getMinerals()
 const facilityMinerals = getFacilityMinerals()
 
 // if the user has made a selection then store the user selection
-
-
+document.addEventListener(
+    "change", 
+    (event) => {
+    if (event.target.name === "mineralList") {
+        setMineral(parseInt(event.target.value))
+    }
+})
 // add a change event listener for when the user selects what mineral they want to purchase
 
 
@@ -19,12 +24,12 @@ export const ChosenMinerals = () => {
     // write an if statement to see if a mineral has been selected
     if ("selectedMineral" in transientState) {
         //iterate through the facilityMinerals (find)
-        const chosenMineral = facilityMinerals.find(facilityMineral => {
+        const chosenFacilityMineral = facilityMinerals.find(facilityMineral => {
             return facilityMineral.mineralId === transientState.selectedMineral
         })
         // match the mineral.id to the selectedMineral.mineralId (transientState)
         const foundMineralObject = minerals.find(mineral => {
-            return mineral.id === chosenMineral.mineralId
+            return mineral.id === chosenFacilityMineral.mineralId
         })
         // write an html string that outputs 1 ton of selected mineral from selected facility
         let html = `1 ton of ${foundMineralObject.name}`
@@ -57,7 +62,7 @@ export const FacilityMinerals = () => {
 
             if (transientState.selectedFacility === facilityMineral.facilityId) {
                 html += `<li>
-                <input type="radio" name="mineralList"/>${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
+                <input type="radio" name="mineralList" value="${facilityMineral.id}" />${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
 
             }
 
