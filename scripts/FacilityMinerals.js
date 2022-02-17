@@ -1,6 +1,6 @@
 // Import getter and setters from database
 
-import { getMinerals, getFacilityMinerals, getTransientState, setMineral } from "./database.js";
+import { getMinerals, getFacilityMinerals, getTransientState, setFacilityMineral } from "./database.js";
 
 // Declare a variable and set it equal to invoked getter function
 const minerals = getMinerals()
@@ -12,7 +12,7 @@ document.addEventListener(
     "change", 
     (event) => {
     if (event.target.name === "mineralList") {
-        setMineral(parseInt(event.target.value))
+        setFacilityMineral(parseInt(event.target.value))
     }
 })
 // add a change event listener for when the user selects what mineral they want to purchase
@@ -22,12 +22,12 @@ document.addEventListener(
 export const ChosenMinerals = () => {
     let transientState = getTransientState()
     // write an if statement to see if a mineral has been selected
-    if ("selectedMineral" in transientState) {
+    if ("selectedFacilityMineral" in transientState) {
         //iterate through the facilityMinerals (find)
         const chosenFacilityMineral = facilityMinerals.find(facilityMineral => {
-            return facilityMineral.mineralId === transientState.selectedMineral
+            return facilityMineral.id === transientState.selectedFacilityMineral
         })
-        // match the mineral.id to the selectedMineral.mineralId (transientState)
+        // match the mineral.id to the selectedFacilityMineral.mineralId (transientState)
         const foundMineralObject = minerals.find(mineral => {
             return mineral.id === chosenFacilityMineral.mineralId
         })
@@ -62,7 +62,7 @@ export const FacilityMinerals = () => {
 
             if (transientState.selectedFacility === facilityMineral.facilityId) {
                 html += `<li>
-                <input type="radio" name="mineralList" value="${facilityMineral.id}" />${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
+                <input type="radio" ${facilityMineral.id === transientState.selectedFacilityMineral ? "checked" : ""} name="mineralList" value="${facilityMineral.id}" />${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`
 
             }
 
