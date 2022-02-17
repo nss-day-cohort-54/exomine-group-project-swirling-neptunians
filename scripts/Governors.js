@@ -14,7 +14,7 @@ const governors = getGovernors()
             }
         }
     )
-
+//Governors function defined
 export const Governors = () => {
     let html = "<select id='governor'><option value='0'>Select your governor...</option>"
 
