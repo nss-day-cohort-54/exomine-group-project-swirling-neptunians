@@ -1,7 +1,7 @@
 // Import all the things
 import { Governors } from "./Governors.js";
 import { Facilities } from "./Facilities.js";
-import { FacilityMinerals } from "./FacilityMinerals.js"
+import { ChosenMinerals, FacilityMinerals } from "./FacilityMinerals.js"
 import { ColonyMinerals } from "./ColonyMinerals.js";
 
 
@@ -17,5 +17,6 @@ import { ColonyMinerals } from "./ColonyMinerals.js";
         ${Facilities()}
         ${FacilityMinerals()}
         ${ColonyMinerals()}
+        ${ChosenMinerals()}
         `
     }
