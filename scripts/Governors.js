@@ -1,5 +1,5 @@
 //  Import the governors array (getter & setter function)
-import { getGovernors, setGovernor } from "./database.js";
+import { getGovernors, getTransientState, setGovernor } from "./database.js";
 
 // Declare a variable that invokes the getter function
 const governors = getGovernors()
@@ -17,10 +17,10 @@ const governors = getGovernors()
 //Governors function defined
 export const Governors = () => {
     let html = "<select id='governor'><option value='0'>Select your governor...</option>"
-
+    let transientState = getTransientState()
     // Use .map() for converting objects to <li> elements
     const listGovernors = governors.map(governor => {
-        return `<option value="${governor.id}" /> ${governor.name}`
+        return `<option ${governor.id === transientState.selectedGovernor ? "selected" : ""}  value="${governor.id}" /> ${governor.name}`
     })
 
     html += listGovernors.join("")

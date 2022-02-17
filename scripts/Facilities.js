@@ -21,10 +21,10 @@ const facilities = getFacilities()
 //  Write and export (to exomine) a function that returns a string of html interpolated
 export const Facilities = () => {
     let html = "<select id='facility'><option value='0'>Select your facility...</option>"
-
+    let transientState = getTransientState()
     // Use .map() for converting objects to <li> elements
     const listFacilities = facilities.map(facility => {
-        return `<option value="${facility.id}" /> ${facility.name}`
+        return `<option ${facility.id === transientState.selectedFacility ? "selected": ""} value="${facility.id}" /> ${facility.name}`
     })
 
     html += listFacilities.join("")
