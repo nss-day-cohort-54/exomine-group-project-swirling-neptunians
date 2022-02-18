@@ -1,1 +1,5 @@
 /* put a class in our <li> to remove bullets */
+
+.facility_mineral_list {
+    list-style-type: none;
+}

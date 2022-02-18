@@ -18,9 +18,9 @@ document.addEventListener("click", (clickEvent) => {
 // functions (minus the purchaseMineral function)
 export const Exomine = () => {
   return `
-        <h2>Governors</h2>
+        <h2>Choose a governor</h2>
         ${Governors()}
-        <h2>Facilities</h2>
+        <h2>Choose a facility</h2>
         ${Facilities()}
         <br>
         ${FacilityMinerals()}

@@ -24,9 +24,11 @@ export const ColonyMinerals = () => {
     // }
     for (const colony of colonies) {
       if (transientState.selectedGovernor === colony.governorId) {
-        return `${colony.name} Minerals`;
+        return `<h2>${colony.name} Minerals</h2>`;
       }
     }
+  } else {
+    return `<h2>Colony Minerals</h2>`;
   }
 };
 
