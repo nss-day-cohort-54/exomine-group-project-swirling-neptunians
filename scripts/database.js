@@ -99,23 +99,65 @@ export const getTransientState = () => {
 };
 
 export const purchaseMineral = () => {
+  // generate new UID for each object in colonyMinerals
+
+  newColonyMinerals.mineralWeight = []
   // Broadcast custom event to entire document so that the
   // application can re-render and update state
   // if statement to check transientState values of selectedFacilityMineral
   if ("selectedFacilityMineral" in database.transientState) {
+    // iterate facilityMinerals array using .find()
     let chosenFacilityMineral = database.facilityMinerals.find(
+      // let chosenFacilityMineral = facilityMineral.id === transientState.selectedFacilityMineral
       facilityMineral => facilityMineral.id === database.transientState.selectedFacilityMineral
     );
+    //   then subtract one from relevant facilityMineral.mineralWeight
     chosenFacilityMineral.mineralWeight = chosenFacilityMineral.mineralWeight -1;
+    // add one to the tonnage of minerals at a given colony
+      // When the first mineral is added, display to the DOM
+      // if no minerals have been added to the colony, display nothing to the ColonyMinerals DOM 
+        // push to ColonyMinerals array 
+    
   }
-  // iterate facilityMinerals array using .find()
-  // let chosenFacilityMineral = facilityMineral.id === transientState.selectedFacilityMineral
-  //   then return facilityMineral.mineralWeight - 1
+  // add 1 to "tons of" mineral in colonyMinerals
+  // html display "1 tons of" needs to be cleared from space cart .push to colonyMinerals array
+  
   // save new weight in a variable
   // re-render html
 
-  // once purchase mineral button is clicked, add 1 to "tons of" mineral in colonyMinerals
-  // html display "1 tons of" needs to be cleared from space cart
-
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
+
+
+// iterate through facilityMinerals and find matching mineral.id
+
+
+
+// New function to add 1 of relevant mineral to ColonyMinerals DOM
+
+// const newColonyMineral = (facilityMineralObject) => {
+//   const newColonyMineral = {...database.colonyMinerals}
+//   // create a new UID
+//   const newUID = database.colonyMinerals.length
+//   newColonyMineral.id = newUID ++  
+//   const colonyMineralObject = {
+//     id = newUID,
+//     colonyId: database.transientState.colonyId,
+//     mineralId: facilityMineralObject.mineralId,
+//     mineralWeight: 1 
+//   }
+//   database.colonyMinerals.push(colonyMineralObject)
+// }
+
+// push property(s) to database.colonyMinerals array
+
+// let newMineralWeight = colonyMineralObject.mineralWeight +1
+
+// if statement to check if the mineralWeight <1 invoke newColonyMineral
+// else mineralWeight 
+
+//  if ("mineralWeight" in colonyMinerals) {
+//   mineralWeight = mineralWeight +1
+// } else {
+//   return ""
+// }

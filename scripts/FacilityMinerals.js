@@ -1,6 +1,6 @@
 // Import getter and setters from database
 
-import { getMinerals, getFacilityMinerals, getTransientState, setFacilityMineral } from "./database.js";
+import { getMinerals, getFacilityMinerals, getTransientState, setFacilityMineral, getFacilities } from "./database.js";
 
 // Declare a variable and set it equal to invoked getter function
 const minerals = getMinerals()
@@ -20,6 +20,7 @@ document.addEventListener(
 
 // define a function that displays 1 ton of the selected mineral in the cart:
 export const ChosenMinerals = () => {
+    const facilities = getFacilities()
     let transientState = getTransientState()
     // write an if statement to see if a mineral has been selected
     if ("selectedFacilityMineral" in transientState) {
@@ -31,8 +32,9 @@ export const ChosenMinerals = () => {
         const foundMineralObject = minerals.find(mineral => {
             return mineral.id === chosenFacilityMineral.mineralId
         })
+        const foundFacility = facilities.find(facility => transientState.selectedFacility === facility.id)
         // write an html string that outputs 1 ton of selected mineral from selected facility
-        let html = `1 ton of ${foundMineralObject.name}`
+        let html = `1 ton of ${foundMineralObject.name} from ${foundFacility.name}`
         //from ${facility.name}
         return html
     } else {
