@@ -36,7 +36,7 @@ export const ChosenMinerals = () => {
         //from ${facility.name}
         return html
     } else {
-        return "foaohp"
+        return "else return from ChosenMinerals function in FacililtyMinerals.js"
     }
 }
 // initialize an empty array
@@ -81,7 +81,7 @@ export const FacilityMinerals = () => {
         html += "</ul>"
         return newHtml
     } else {
-        return "asdfa"
+        return "else return from FacilityMinerals function in FacililtyMinerals.js"
     }
 }
 

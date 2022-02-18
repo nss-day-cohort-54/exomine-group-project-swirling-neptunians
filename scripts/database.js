@@ -104,11 +104,9 @@ export const purchaseMineral = () => {
   // if statement to check transientState values of selectedFacilityMineral
   if ("selectedFacilityMineral" in database.transientState) {
     let chosenFacilityMineral = database.facilityMinerals.find(
-      (facilityMineral) => {
-        facilityMineral.id === database.transientState.selectedFacilityMineral;
-      }
+      facilityMineral => facilityMineral.id === database.transientState.selectedFacilityMineral
     );
-    chosenFacilityMineral.mineralWeight - 1;
+    chosenFacilityMineral.mineralWeight = chosenFacilityMineral.mineralWeight -1;
   }
   // iterate facilityMinerals array using .find()
   // let chosenFacilityMineral = facilityMineral.id === transientState.selectedFacilityMineral
