@@ -22,10 +22,13 @@ export const Exomine = () => {
         ${Governors()}
         <h2>Facilities</h2>
         ${Facilities()}
+        <br>
         ${FacilityMinerals()}
+        <br>
         ${ColonyMinerals()}
-        ${ChosenMinerals()}
+        <br>
         <h2>Space Cart</h2>
+        ${ChosenMinerals()}
          <article>
             <button id="purchase">Purchase Mineral</button>
         </article>
