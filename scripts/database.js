@@ -114,6 +114,7 @@ export const purchaseMineral = () => {
     //   then subtract one from relevant facilityMineral.mineralWeight
     chosenFacilityMineral.mineralWeight =
       chosenFacilityMineral.mineralWeight - 1;
+
     // add one to the tonnage of minerals at a given colony
     // When the first mineral is added, display to the DOM
     // if no minerals have been added to the colony, display nothing to the ColonyMinerals DOM
@@ -151,21 +152,26 @@ export const purchaseMineral = () => {
       );
     }
   );
+  // foundColonyMineralObj would either be matched or undefined(colony never bought given mineral before)
+  // colonyId and mineralWeight (from ColonyMinerals)
+  // if first mineral purchase ever for given colony, assign first UID,  else add one to previous UID
+  let newOrder = {...database.transientState}
+  if (foundColonyMineralObject === undefined) {
+    let lastIndex = database.colonyMinerals.length
+    newOrder = {
+      id: lastIndex ++,
+      mineralWeight: 1,
+      mineralId: mineralId,
+      colonyId: colonyId
+    }
+    database.colonyMinerals.push(newOrder)
+  } else {
+    foundColonyMineralObject.mineralWeight += 1;
+  }
 
-  foundColonyMineralObject.mineralWeight += 1;
+    // render mineral name and total colony mineral weight to DOM
+
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
-// need the mineral.id property of the selectedFacility mineral
-//
-
-// add 1 to the weight property of the corresponding colonyMineral
-
-//
-
-// push property(s) to database.colonyMinerals array
-
-// let newMineralWeight = colonyMineralObject.mineralWeight +1
-
-// if statement to check if the mineralWeight <1 invoke newColonyMineral
-// else mineralWeight
+const 
