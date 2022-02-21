@@ -98,8 +98,8 @@ export const getTransientState = () => {
   return { ...database.transientState };
 };
 
+let newOrder = {...database.transientState}
 export const purchaseMineral = () => {
-  let newOrder = {...database.transientState}
   // generate new UID for each object in colonyMinerals
 
   // Broadcast custom event to entire document so that the
@@ -156,7 +156,6 @@ export const purchaseMineral = () => {
   // foundColonyMineralObj would either be matched or undefined(colony never bought given mineral before)
   // colonyId and mineralWeight (from ColonyMinerals)
   // if it's the first mineral purchase ever for given colony, create a new object and assign first UID, else add one to weight
-  let html = `<ul>`
   if (foundColonyMineralObject === undefined) {
     let lastIndex = database.colonyMinerals.length
     newOrder = {
@@ -167,11 +166,7 @@ export const purchaseMineral = () => {
     }
     database.colonyMinerals.push(newOrder)
     // use find method to compare mineralIds to access mineral name
-    const foundColonyMineralName = database.minerals.find((mineral) => newOrder.mineralId === mineral.id)
     // render purchased mineral name and total colony mineral weight to DOM
-    html += `${newOrder.mineralWeight} tons of ${foundColonyMineralName.name}`
-    html += `</ul>`
-    return html
   } else {
     foundColonyMineralObject.mineralWeight += 1;
     
@@ -180,6 +175,7 @@ export const purchaseMineral = () => {
   
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
+// display ___tons of mineral name or empty string if 
 
 // do we need to define the function here and define foundColonyMineralName and newOrder globally?
 

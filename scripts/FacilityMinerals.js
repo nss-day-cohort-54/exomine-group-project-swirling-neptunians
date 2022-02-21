@@ -67,13 +67,8 @@ export const FacilityMinerals = () => {
 
       if (transientState.selectedFacility === facilityMineral.facilityId) {
         html += `<li>
-                <input type="radio" ${
-                  facilityMineral.id === transientState.selectedFacilityMineral
-                    ? "checked"
-                    : ""
-                } name="mineralList" value="${facilityMineral.id}" />${
-          facilityMineral.mineralWeight
-        } tons of ${foundMineralObject.name}</li>`;
+        <input type="radio" ${facilityMineral.id === transientState.selectedFacilityMineral ? "checked" : ""} 
+        name="mineralList" value="${facilityMineral.id}" />${facilityMineral.mineralWeight} tons of ${foundMineralObject.name}</li>`;
       }
 
       // const filteredFacilityMinerals = facilityMinerals.filter(facilityMineral => {
