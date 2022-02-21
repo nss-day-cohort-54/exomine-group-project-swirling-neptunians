@@ -101,7 +101,6 @@ export const getTransientState = () => {
 export const purchaseMineral = () => {
   // generate new UID for each object in colonyMinerals
 
-  newColonyMinerals.mineralWeight = [];
   // Broadcast custom event to entire document so that the
   // application can re-render and update state
   // if statement to check transientState values of selectedFacilityMineral
@@ -125,34 +124,44 @@ export const purchaseMineral = () => {
   // save new weight in a variable
   // re-render html
 
+  // iterate through facilityMinerals and find matching mineral.id
+
+  // New function to add 1 of relevant mineral to ColonyMinerals DOM
+  // we have the facility mineral the user selected
+  // iterate colonies array using .find()
+  const foundColony = database.colonies.find(
+    (colony) => database.transientState.selectedGovernor === colony.governorId
+  );
+
+  const colonyId = foundColony.id;
+  const foundFacilityMineral = database.facilityMinerals.find(
+    (facilityMineral) => {
+      return (
+        facilityMineral.id === database.transientState.selectedFacilityMineral
+      );
+    }
+  );
+  const mineralId = foundFacilityMineral.mineralId;
+
+  const foundColonyMineralObject = database.colonyMinerals.find(
+    (colonyMineral) => {
+      return (
+        colonyMineral.colonyId === colonyId &&
+        colonyMineral.mineralId === mineralId
+      );
+    }
+  );
+
+  foundColonyMineralObject.mineralWeight += 1;
   document.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
-// iterate through facilityMinerals and find matching mineral.id
+// need the mineral.id property of the selectedFacility mineral
+//
 
-// New function to add 1 of relevant mineral to ColonyMinerals DOM
-// const newColonyMineral = (facilityMineralObject) => {
-//   const newColonyMineral = { ...database.colonyMinerals };
-//   //   // create a new UID
-//   let newUID = database.colonyMinerals.length;
-//   newColonyMineral.id = newUID++;
-//   const colonyMineralObject = {
-//     id: newUID,
-//     colonyId: database.transientState.colonyId,
-//     mineralId: facilityMineralObject.mineralId,
-//     mineralWeight: 1,
-//   };
-//   database.colonyMinerals.push(colonyMineralObject);
-// };
+// add 1 to the weight property of the corresponding colonyMineral
 
-// if (
-//   "mineralWeight" in database.colonyMinerals &&
-//   database.colonyMinerals.mineralWeight >= 1
-// ) {
-//   mineralWeight = mineralWeight + 1;
-// } else {
-//   newColonyMineral();
-// }
+//
 
 // push property(s) to database.colonyMinerals array
 
