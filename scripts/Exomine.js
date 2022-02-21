@@ -4,6 +4,7 @@ import { Facilities } from "./Facilities.js";
 import { ChosenMinerals, FacilityMinerals } from "./FacilityMinerals.js";
 import { ColonyMinerals } from "./ColonyMinerals.js";
 import {  purchaseMineral } from "./database.js";
+import { ColonyMineralsHTML} from "./ColonyMinerals.js"
 // setColonyMineral,
 // Event listener for the purchase mineral button (with the purchaseMineral function)
 document.addEventListener("click", (clickEvent) => {
@@ -26,6 +27,7 @@ export const Exomine = () => {
         ${FacilityMinerals()}
         <br>
         ${ColonyMinerals()}
+        ${ColonyMineralsHTML()}
         <br>
         <h2>Space Cart</h2>
         ${ChosenMinerals()}
