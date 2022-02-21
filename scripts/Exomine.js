@@ -3,13 +3,13 @@ import { Governors } from "./Governors.js";
 import { Facilities } from "./Facilities.js";
 import { ChosenMinerals, FacilityMinerals } from "./FacilityMinerals.js";
 import { ColonyMinerals } from "./ColonyMinerals.js";
-import { setColonyMineral, purchaseMineral } from "./database.js";
-
-// Event listener for the purchase mineral button (with the purhcaseMineral function)
+import {  purchaseMineral } from "./database.js";
+// setColonyMineral,
+// Event listener for the purchase mineral button (with the purchaseMineral function)
 document.addEventListener("click", (clickEvent) => {
   if (clickEvent.target.id === "purchase") {
     // invoking setPaint function which puts a property onto the orderBuilder object
-    setColonyMineral(parseInt(clickEvent.target.value));
+    // setColonyMineral(parseInt(clickEvent.target.value));
     purchaseMineral();
   }
 });
